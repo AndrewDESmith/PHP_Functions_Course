@@ -106,6 +106,19 @@
   $name = "friend";
 
   // The use() keyword allows you to import variables from outside of the function environment, without having to call the function with undefined parameters.  Some functions in PHP allow callbacks(like array_walk, array_map, etc that have predefined parameters. In these instances, you can call use() to add other variables that otherwise would not be possible to use in a callback.
+  // Also, the use() statement captures the variable at the time the closure function is created.  Regular function arguments capture the value when the function is called.
+
+  // $name = "Mike";
+
+  // $greet = function($name) use($name){
+  //   echo "$name";
+  // };
+
+  // $name = "Tom";
+
+  // $greet(); // Mike
+
+
   $greet = function() use($name) {
     echo "Hello there, $name.<br>";
   };  // Notice the semi-colon at the end of this function, just as with JS closures/anonymous functions.
