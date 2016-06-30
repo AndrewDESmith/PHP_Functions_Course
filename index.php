@@ -100,6 +100,7 @@
   echo $num[2];
   echo "<br>";
 
+  // ==================================================
 
   // *** PHP Closures (aka. Anonymous Functions): ***
 
@@ -125,6 +126,61 @@
 
   $greet();
 
+  // ==================================================
+
+  // *** Built-In PHP Functions: ***
+
+  $phrase = "We only hit what we aim for.";
+
+  // Get string length:
+  $len = strlen($phrase);
+  // echo $len;
+
+  // Substring:
+  // substr($string, start_position_integer, [optional length_integer])
+  echo substr($phrase, 3, 9); // "only hit"
+  echo "<br>";
+
+  // String position:
+  // Find the position of the first occurrence of a substring in a string.
+  // strpos($haystack, $needle, [optional offset_position_to_begin_search])
+  // Find the numeric position of the first occurrence of $needle in the $haystack string.
+  echo strpos($phrase, "hit");
+  echo "<br>";
+  var_dump(strpos($phrase, "Bob"));  // Returns false when a string is not found.
+  echo "<br>";
+  // Find the starting position of a word, then use that position to find the rest of the substring in the phrase:
+  $start = strpos($phrase, "hit");
+  echo substr($phrase, $start); // "hit what we aim for."
+  echo "<br>";
+
+
+  // Array Functions
+
+  $names = array(
+    "Mike" => "Frog",
+    "Chris" => "Teacher",
+    "Hampton" => "Teacher"
+  );
+
+  // array_keys()
+  // Returns the keys from the $array. The returned keys can be restricted to only match an optional $search_value.
+  // array_keys($array, [optional $search_value, [optional $strict]])
+  // foreach (array_keys($names) as $name) {
+  //   echo "Hello, $name.<br>";
+  // }
+
+  // array_walk()
+  // Applies the user-defined $callback function to each element of the $array (walks through the $array).
+  // array_walk($array, $callback, [$userdata])
+  // From the array_walk() documentation, the $callback function typically takes two parameters, the array's value and then the array's key.
+  function print_info($value, $key) {
+    // Will go through the $key-$value pairs of the $names array when array_walk() is called.
+    echo "$key is a $value.<br>";
+  }
+
+  // Use the string version of the callback function name:
+  array_walk($names, "print_info");
 ?>
 
 
